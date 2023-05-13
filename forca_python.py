@@ -1,7 +1,7 @@
 import random
 
 resp="sim"
-while resp=="sim":
+while resp=="sim" or resp=="s":
 
     PalavraSelecionada = []
     PalavraDividida = []
@@ -25,7 +25,15 @@ while resp=="sim":
     print("")
     print(f"A palavra tem: {contLetra} letras\n{placar}")
 
+    chances=5
+
     while True:
+
+        if chances==0:
+            print("VOCE PERDEU!!")
+            break
+
+        print(f"Voce tem {chances} chances")
         chute = input("\nDigite uma letra ou digite 'chutar' para adivinhar a palavra: ").lower()
 
         if chute == "chutar":
@@ -36,6 +44,7 @@ while resp=="sim":
                 break
             else:
                 print("Você errou a palavra!")
+                chances=chances-1
 
         elif len(chute) == 1:
             acertou = False
@@ -49,8 +58,9 @@ while resp=="sim":
                 print(f"Letra '{chute}' está na palavra!\n{placar}")
             else:
                 print(f"Letra '{chute}' não está na palavra!\n{placar}")
+                chances=chances-1
 
         else:
             print("Entrada inválida! Digite apenas uma letra ou 'chutar' para adivinhar a palavra.")
 
-    resp=str(input("Quer jogar novamente?")).lower()
+    resp=str(input("Quer jogar novamente? ")).lower()
