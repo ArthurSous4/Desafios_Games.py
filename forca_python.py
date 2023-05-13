@@ -6,7 +6,7 @@ while resp=="sim" or resp=="s":
     PalavraSelecionada = []
     PalavraDividida = []
     placar = []
-    AnimaisSecretas = ["leao", "urso", "rato", "girafa", "tigre", "foca", "baleia", "jacare", "leopardo"]
+    AnimaisSecretas = ["leao", "urso", "rato", "girafa", "tigre", "foca", "baleia", "jacare", "leopardo","axolote"]
 
     PalavraSelecionada.append(random.choice(AnimaisSecretas))
 
