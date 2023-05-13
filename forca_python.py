@@ -15,7 +15,7 @@ while resp=="sim" or resp=="s":
 
     contLetra = 0
 
-    for espaco in PalavraDividida:
+    for espaco in PalavraDividida:            #Cria um placar com as letras subistituidas por palavras
         contLetra = contLetra + 1
         placar.append("_")
 
@@ -29,7 +29,7 @@ while resp=="sim" or resp=="s":
 
     while True:
 
-        if chances==0:
+        if chances==0:              #Contador de chances
             print("VOCE PERDEU!!")
             break
 
@@ -47,12 +47,12 @@ while resp=="sim" or resp=="s":
                 chances=chances-1
 
         elif len(chute) == 1:
-            acertou = False
+            acertou = False          #Começa deduzindo que o chute foi errado
 
             for i, letra in enumerate(PalavraDividida):
                 if chute == letra:
                     placar[i] = letra
-                    acertou = True
+                    acertou = True           #Se o chute estiver certo a variável acertou volta a ser true
 
             if acertou:
                 print(f"Letra '{chute}' está na palavra!\n{placar}")
