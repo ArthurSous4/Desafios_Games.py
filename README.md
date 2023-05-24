@@ -1,2 +1,2 @@
-# Games Feitos no Python
+# MiniGames Feitos no Python
 
