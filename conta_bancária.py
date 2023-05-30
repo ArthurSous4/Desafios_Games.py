@@ -8,22 +8,30 @@ class ContaBancaria:
 
     def depositarValor(self,valor):
         if valor <= 0:
-            print("Valor inválido para deposito, voltando ao menu inicial ")
+            print("Valor inválido para depósito, voltando ao menu inicial")
         else:
             if self.chequeEspSaldo != 0:
-                valor -= self.chequeEspSaldo
-
-            self.saldo += valor
-            print(f"O valor de {valor} R$ foi adicionado á carteira")
+                if valor >= self.chequeEspSaldo:
+                    valor -= self.chequeEspSaldo
+                    self.chequeEspSaldo = 0
+                else:
+                    self.chequeEspSaldo -= valor
+                    valor = 0
+            else:
+                self.saldo += valor
+                print(f"O valor de {valor} R$ foi adicionado à carteira")
 
     def sacarValor(self,valor):
-        if valor <=0 or valor > self.saldo:
-            if 
-        
-        
-                print("Valor inválido para saque, voltando ao menu inicial ")
-                
-                
+        if valor > self.saldo:
+            if valor > self.saldo + self.chequeEspLmt:
+                print("Valor inválido para saque, limite do cheque especial foi excedido")
+            else:
+                self.chequeEspSaldo = valor - self.saldo
+                self.saldo = 0
+                print(
+                    f"O usuário {self.titularConta} sacou {valor} R$, e está devendo {self.chequeEspSaldo} R$ ao cheque especial")
+        elif valor <= 0:
+            print("Valor inválido para saque, voltando ao menu inicial")
         else:
             self.saldo -= valor
             print(f"O valor de {valor} R$ foi sacado da sua carteira")
@@ -38,6 +46,9 @@ class ContaBancaria:
     def consultarSaldo(self):
         print(f"O saldo da conta é: {self.saldo}")
 
+    def consultarChequeEsp(self):
+        print(f"O saldo do seu cheque especial é {self.chequeEspSaldo}R$ e seu limite é de {self.chequeEspLmt}R$")
+
 
 #contas testes
 
@@ -45,9 +56,7 @@ maria=ContaBancaria("2811", "Maria Da Silva", 0, 100,20)
 joao=ContaBancaria("0520", "Joao Albuquerque", 0, 150,0)
 
 joao.depositarValor(100)
-joao.sacarValor(50)
-joao.transferirValor(50, maria)
-maria.consultarSaldo()
-joao.consultarSaldo()
-maria.depositarValor(20)
-maria.consultarSaldo()
+joao.sacarValor(250)
+joao.depositarValor(20)
+joao.consultarChequeEsp()
+joao.depositarValor(20)
